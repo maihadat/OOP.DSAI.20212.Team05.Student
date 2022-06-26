@@ -1,9 +1,8 @@
 package SortingAlgorithm;
 
 public interface Display {
-	public void displaystart();
-	public void displayfinish();
-	public void nextstep();
-	public void curstep();
-
+	public int[] displayStart();
+	public int[] displayFinish();
+	public int[] nextStep();
+	public int[] preStep();
 }
