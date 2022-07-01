@@ -76,9 +76,9 @@ public abstract class Sort {
 		String rs = "";
 		for(int index=0; index<n; index++) {
 			if(index == n-1) {
-				rs += String.valueOf(arrayOfSteps.get(stepNumber)[index]);
+				rs += String.valueOf(arrayOfSteps.get(stepNumber+1)[index]);
 			}else {
-				rs += String.valueOf(arrayOfSteps.get(stepNumber)[index]) + "; ";
+				rs += String.valueOf(arrayOfSteps.get(stepNumber+1)[index]) + "; ";
 			}
 		}
 		return rs;
