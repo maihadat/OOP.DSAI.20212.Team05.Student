@@ -1,6 +1,7 @@
 package SortingAlgorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ShellSort extends Sort implements Display {
 	// Attribute storing indices of two switching elements at the i step as an array (= currentSwitchIndex.get(i)) 
@@ -30,7 +31,7 @@ public class ShellSort extends Sort implements Display {
 	}
 	public int[] displayFinish() {
 		currentSteps = this.getNumberSteps();
-		return arrayOfSteps.get(this.getNumberSteps()-1);
+		return arrayOfSteps.get(this.getNumberSteps());
 	}
 	public int[] nextStep() {
 		currentSteps += 1;
@@ -52,36 +53,35 @@ public class ShellSort extends Sort implements Display {
                     arr[j] = arr[j - gap];
 	            }
 	            arr[j] = key;
-	            int[] tmp = new int[2];
+	            int[] tmp = new int[3];
 	            if (j==i) {
-	            	tmp[0] = i;
-	            	tmp[1] = j-gap;
+	            	tmp[1] = i;
+	            	tmp[0] = j-gap;
+	            	tmp[2] = gap;
 	            }else {
-	            	tmp[0] = i;
-	            	tmp[1] = j;
+	            	tmp[1] = i;
+	            	tmp[0] = j;
+	            	tmp[2] = gap;
 	            }
 	            numberSteps += 1;
 	            arrayOfSteps.add(arr.clone());
 	            currentSwitchIndex.add(tmp);
 	        }
 	    }
+	    arrayOfSteps.add(arr.clone());
 	}	
 	
+	
+	// test 
 	/*
-	// test
 	public static void main(String[] args) {
 		ShellSort s = new ShellSort(10);
+		System.out.println("Init array: " + Arrays.toString(s.arr));
 		s.sort();
-		s.displayStart();
-		System.out.print(Sort.displayStep(s.arrayOfSteps, s.currentSteps) + " ");
-		System.out.print(s.getCurrentSwitchIndex(s.currentSteps)[0] + " ");
-		System.out.println(s.getCurrentSwitchIndex(s.currentSteps)[1]);
-		for(int i=0; i<s.getNumberSteps()-1; i++) {
-			s.nextStep();
-			System.out.print(Sort.displayStep(s.arrayOfSteps, s.currentSteps) + " ");
-			System.out.print(s.getCurrentSwitchIndex(s.currentSteps)[0] + " ");
-			System.out.println(s.getCurrentSwitchIndex(s.currentSteps)[1]);
-		}
+		for(int i=0; i<=s.getNumberSteps(); i++) {
+			System.out.print("Step "+ i + ": ");
+			System.out.println(Sort.displayStep(s.arrayOfSteps, i));
+		}	
 	}
 	*/
 }

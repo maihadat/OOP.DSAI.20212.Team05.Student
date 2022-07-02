@@ -1,6 +1,7 @@
 package SortingAlgorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HeapSort extends Sort implements Display {
 	private ArrayList<int[]> currentSwitchIndex;
@@ -69,7 +70,7 @@ public class HeapSort extends Sort implements Display {
 
 	public int[] displayFinish() {
 		currentSteps = this.getNumberSteps();
-		return arrayOfSteps.get(this.getNumberSteps() - 1);
+		return arrayOfSteps.get(this.getNumberSteps());
 	}
 
 	public int[] nextStep() {
@@ -85,8 +86,7 @@ public class HeapSort extends Sort implements Display {
 	public static void main(String[] args) {
 		HeapSort s = new HeapSort(10);
 		s.sort();
-		s.displayStart();
-		for (int i = 0; i < s.arrayOfSteps.size(); i++) {
+		for (int i = 0; i <= s.numberSteps; i++) {
 			for (int j = 0; j < s.arrayOfSteps.get(i).length; j++) {
     			System.out.printf("%d ", s.arrayOfSteps.get(i)[j]);
     		}
