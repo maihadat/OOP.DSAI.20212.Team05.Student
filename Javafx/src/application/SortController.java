@@ -1,6 +1,5 @@
 package application;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,11 +10,13 @@ import SortingAlgorithm.ShellSort.*;
 import SortingAlgorithm.Sort;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Random;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -25,6 +26,8 @@ import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.*;
 import javafx.event.ActionEvent;
 
@@ -95,14 +98,21 @@ public class SortController implements Initializable {
 		sort = new ShellSort(arr);
 	}
 	for (int i = 0; i < arr.length; ++i) {
-		set1.getData().add(new XYChart.Data<String,Number>(String.valueOf(arr[i]),arr[i]));	}
+		XYChart.Data<String, Number> data = new XYChart.Data<String,Number>(String.valueOf(arr[i]),arr[i]);
+		data.nodeProperty().addListener(new ChangeListener<Node>() {
+            @Override
+            public void changed(ObservableValue<? extends Node> ov, Node oldNode, Node newNode) {
+                newNode.setStyle("-fx-bar-fill: red;");
 
-	Chart.getData().setAll(set1);
-	sort.sort();
+
+            }
+        });
+	set1.getData().add(data);	
 
 	}
-
-
+	Chart.getData().setAll(set1);
+	sort.sort();
+	}
 
 
 
@@ -111,16 +121,36 @@ public class SortController implements Initializable {
     @FXML
     void NextButtonControl(ActionEvent e) {
 
-		XYChart.Series set_temp = new XYChart.Series<>();
+    	XYChart.Series set_temp = new XYChart.Series<>();
+    	
 
+    	arr = sort.arrayOfSteps.get(currentstep+1);
     	Chart.getData().clear();
 		Chart.layout();
-		arr = sort.arrayOfSteps.get(currentstep +1);
     	for (int i = 0; i < arr.length; ++i) {
-    		set_temp.getData().add(new XYChart.Data<String,Number>(String.valueOf(arr[i]),arr[i]));	}
+    		final int j =i;
+    		XYChart.Data<String, Number> data = new XYChart.Data<String,Number>(String.valueOf(arr[i]),arr[i]);
+    		data.nodeProperty().addListener(new ChangeListener<Node>() {
+                @Override
+                public void changed(ObservableValue<? extends Node> ov, Node oldNode, Node newNode) {
+                    if (Arrays.stream(sort.currentSwitchIndex.get(currentstep)).anyMatch(i -> i == j) == true) {
+                	newNode.setStyle("-fx-bar-fill: black;");
+
+
+                }
+                    else {
+                    	newNode.setStyle("-fx-bar-fill: red;");
+                    }
+                    }
+            });	
+    		set_temp.getData().add(data);	
+
+    		}
     		Chart.getData().setAll(set_temp);
     		currentstep += 1;
     		System.out.println(currentstep);
+
+
 
 
     }
@@ -128,15 +158,33 @@ public class SortController implements Initializable {
     private Button PreviousButton;
 	@FXML
 	    void PreviousButtonControl(ActionEvent e) {
+		
 
 			XYChart.Series set_temp = new XYChart.Series<>();
 	    	
 
-	    	arr = sort.arrayOfSteps.get(currentstep);
+	    	arr = sort.arrayOfSteps.get(currentstep-1);
 	    	Chart.getData().clear();
 			Chart.layout();
 	    	for (int i = 0; i < arr.length; ++i) {
-	    		set_temp.getData().add(new XYChart.Data<String,Number>(String.valueOf(arr[i]),arr[i]));	}
+	    		final int j =i;
+	    		XYChart.Data<String, Number> data = new XYChart.Data<String,Number>(String.valueOf(arr[i]),arr[i]);
+	    		data.nodeProperty().addListener(new ChangeListener<Node>() {
+	                @Override
+	                public void changed(ObservableValue<? extends Node> ov, Node oldNode, Node newNode) {
+	                    if (Arrays.stream(sort.currentSwitchIndex.get(currentstep-1)).anyMatch(i -> i == j) == true) {
+	                	newNode.setStyle("-fx-bar-fill: black;");
+
+
+	                }
+	                    else {
+	                    	newNode.setStyle("-fx-bar-fill: red;");
+	                    }
+	                    }
+	            });	
+	    		set_temp.getData().add(data);	
+
+	    		}
 	    		Chart.getData().setAll(set_temp);
 	    		currentstep -= 1;
 	    		System.out.println(currentstep);
@@ -147,6 +195,9 @@ public class SortController implements Initializable {
 	    }
 
 	private String[] algo = {"Heap Sort","Bubble Sort", "Shell Sort"};
+	private static boolean contains_int( int[] arr,int key) {
+	    return Arrays.stream(arr).anyMatch(i -> i == key);
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		AlgoChoice.getItems().addAll(algo);
