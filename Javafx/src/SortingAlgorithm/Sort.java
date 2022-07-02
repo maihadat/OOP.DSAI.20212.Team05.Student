@@ -3,7 +3,7 @@ package SortingAlgorithm;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Sort {
+public abstract class Sort implements Display {
 	protected int n;
 	protected int[] arr;
 	protected int numberSteps;
