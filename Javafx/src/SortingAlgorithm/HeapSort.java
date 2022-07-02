@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HeapSort extends Sort implements Display {
-	private ArrayList<int[]> currentSwitchIndex;
 	
 	public HeapSort(int arrayLength) {
 		super(arrayLength);
