@@ -9,8 +9,8 @@ public abstract class Sort implements Display {
 	protected int numberSteps;
 	protected int currentSteps;
 	// Storing all the sorted array in sorting process step by step 
-	protected ArrayList<int[]> arrayOfSteps; 
-	
+	public ArrayList<int[]> arrayOfSteps; 
+	public ArrayList<int[]> currentSwitchIndex;
 	
 	// getters
 	public int getN() {
