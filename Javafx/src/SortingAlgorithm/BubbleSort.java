@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class BubbleSort extends Sort implements Display {
 	// Attribute storing indices of two switching elements at the i step as an array
 	// (= currentSwitchIndex.get(i))
-	private ArrayList<int[]> currentSwitchIndex;
 
 	// Constructors
 	public BubbleSort(int arrayLength) {
