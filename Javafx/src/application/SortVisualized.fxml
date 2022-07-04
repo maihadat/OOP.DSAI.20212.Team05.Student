@@ -14,10 +14,10 @@
       <ButtonBar prefHeight="49.0" prefWidth="642.0" BorderPane.alignment="CENTER">
         <buttons>
             <Button fx:id="Start" mnemonicParsing="false" onAction="#StartButton" prefHeight="26.0" text="Start" />
-          <Button fx:id="RandomButton" mnemonicParsing="false" text="Random" />
+          <Button fx:id="RandomButton" mnemonicParsing="false" onAction="#FinishButtonControl" text="Finish" />
             <ChoiceBox fx:id="AlgoChoice" prefWidth="150.0" />
-            <Button fx:id="NextButton" mnemonicParsing="false" text="Next" />
-            <Button fx:id="PreviousButton" mnemonicParsing="false" text="Previous" />
+            <Button fx:id="NextButton" mnemonicParsing="false" onAction="#NextButtonControl" text="Next" />
+            <Button fx:id="PreviousButton" mnemonicParsing="false" onAction="#PreviousButtonControl" text="Previous" />
             <TextField fx:id="TextArray" prefHeight="30.0" />
         </buttons>
       </ButtonBar>
