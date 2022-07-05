@@ -14,13 +14,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
 
 public class MainSceneController {
-	
+	protected Stage stage;
+	protected FXMLLoader loader;
+	protected Parent root;
+	protected Scene scene;
 	@FXML
 
 	protected Button Quit;
@@ -32,15 +36,20 @@ public class MainSceneController {
 	
 	
 	@FXML
-	public void Start(MouseEvent event) throws IOException {
-		Stage stage = (Stage) scenePane.getScene().getWindow();
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/applications/SortVisualized.fxml"));
-		loader.setController(new SortController());
-		Parent root = loader.load();
-		Scene scene = new Scene(root);
+	private Button Start;
+	public void Start(ActionEvent event) throws IOException {
+		
+		
+		loader = new FXMLLoader(getClass().getResource("SortVisualized.fxml"));
+		//loader.setController(new SortController());
+		root = loader.load();
+		System.out.println("a");
+		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
 		stage.setTitle("Sorting Visualization");
 		stage.setScene(scene);
+		
+		stage.show();
 
 
 	 }

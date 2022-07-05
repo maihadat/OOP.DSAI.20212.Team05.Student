@@ -21,16 +21,15 @@ public class Main extends Application {
 			primaryStage.setTitle("Hello");
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
 			primaryStage.setOnCloseRequest(event -> {
 				event.consume();
-				logout(primaryStage);	
+				logout(primaryStage);
 			});
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-public void logout(Stage stage){	
+	public void logout(Stage stage){	
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Logout");

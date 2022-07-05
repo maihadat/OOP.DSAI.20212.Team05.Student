@@ -7,6 +7,6 @@
    <children>
       <Button fx:id="helpButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="help" />
       <Button fx:id="Quit" layoutX="288.0" layoutY="294.0" mnemonicParsing="false" onAction="#logout" text="Quit" />
-      <Button fx:id="Start" layoutX="220.0" layoutY="149.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="174.0" text="Start" />
+      <Button fx:id="Start" layoutX="220.0" layoutY="149.0" mnemonicParsing="false" onAction="#Start" prefHeight="66.0" prefWidth="174.0" text="Start" />
    </children>
 </AnchorPane>
