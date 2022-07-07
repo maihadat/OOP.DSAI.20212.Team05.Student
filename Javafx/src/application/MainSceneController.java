@@ -37,7 +37,8 @@ public class MainSceneController {
 	
 	@FXML
 	private Button Start;
-	public void Start(ActionEvent event) throws IOException {
+	@FXML
+	void Start(ActionEvent event) throws IOException {
 		
 		
 		loader = new FXMLLoader(getClass().getResource("SortVisualized.fxml"));
@@ -53,6 +54,21 @@ public class MainSceneController {
 
 
 	 }
+	@FXML
+	void Help(ActionEvent event) throws IOException{
+		loader = new FXMLLoader(getClass().getResource("HelpMenu.fxml"));
+		//loader.setController(new SortController());
+		root = loader.load();
+		System.out.println("a");
+		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setTitle("Sorting Visualization");
+		stage.setScene(scene);
+		
+		stage.show();
+
+	}
+	
 	public void logout(ActionEvent event) {
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
