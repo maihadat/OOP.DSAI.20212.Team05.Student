@@ -21,10 +21,10 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 
 public class MainSceneController {
-	protected Stage stage;
-	protected FXMLLoader loader;
-	protected Parent root;
-	protected Scene scene;
+	private FXMLLoader loader;
+	private Stage stage;
+	private Parent root;
+	private Scene scene;
 	@FXML
 
 	protected Button Quit;
