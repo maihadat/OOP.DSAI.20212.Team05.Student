@@ -106,6 +106,9 @@ public class SortController implements Initializable {
 		catch( NullPointerException except) {
 			JOptionPane.showMessageDialog(null,"Please choose an algorithm");
 		}
+				catch(NumberFormatException except) {
+			JOptionPane.showMessageDialog(null, "Please only input numbers, separated only by comma.");
+		}
 	}
 
 	@FXML
