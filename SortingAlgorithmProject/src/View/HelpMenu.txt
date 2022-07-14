@@ -1,0 +1,20 @@
+This is the instruction of using this application.
+MainScreen: 
+- Hit the Start button to change to Sort Screen.
+- Hit the button Quit to quit the application.
+- Hit one button to choose an algorithm to visualize
+HelpMenu:
+- Hit the Back button to return to main screen.
+- Read the instruction.
+SortScreen
+- Enter an array either by numbers, separated by comma in the box
+ or click the Start button to randomize an array
+- Hit the Next button to continue to next step.
+- Hit the Previous button to return to the previous step.
+- Hit the Finish button to go to the final step.
+- Hit the Back button to go back to main screen.
+Restrictions:
+- Please do not enter two duplicate values in your array. 
+This action does not cause errors,but it will not show you two values.
+- We suggest you not entering number 0 because 
+it will not show this column number in the program. 
