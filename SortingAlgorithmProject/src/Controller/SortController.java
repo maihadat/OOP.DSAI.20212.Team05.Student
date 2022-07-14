@@ -208,9 +208,7 @@ public class SortController{
 		newstage.show();
 
     }
-	private static boolean contains_int( int[] arr,int key) {
-	    return Arrays.stream(arr).anyMatch(i -> i == key);
-	}
+
 
 	private XYChart.Series drawingArray(int[] switchIndex) {
 		XYChart.Series set_temp = new XYChart.Series<>();
