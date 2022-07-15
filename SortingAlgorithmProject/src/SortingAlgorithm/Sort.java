@@ -110,17 +110,4 @@ public abstract class Sort{
 	// Abstract method
 	public void sort() {
 	}
-	// Return a string of sorted array in the process given step number
-	protected static String displayStep(ArrayList<int[]> arrayOfSteps, int stepNumber) {
-		int n = arrayOfSteps.get(0).length;
-		String rs = "";
-		for(int index=0; index<n; index++) {
-			if(index == n-1) {
-				rs += String.valueOf(arrayOfSteps.get(stepNumber+1)[index]);
-			}else {
-				rs += String.valueOf(arrayOfSteps.get(stepNumber+1)[index]) + "; ";
-			}
-		}
-		return rs;
-	}
 }
